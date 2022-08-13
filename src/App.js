@@ -17,7 +17,7 @@ function App() {
     const newTodoItems = [...todoItems];
     const arr = newTodoItems.splice(index, 1);
     swal({
-      title: `Yakin ${arr[0].todo} akan dihappus?`,
+      title: `Yakin ${arr[0].todo} akan dihapus?`,
       text: `Setelah dihapus, Anda tidak akan dapat memulihkan todo ini`,
       icon: "warning",
       buttons: true,
