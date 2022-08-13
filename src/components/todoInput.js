@@ -16,7 +16,7 @@ export default function TodoInput({ createTodoItem }) {
     });
   };
   return (
-    <div className="body-border border rounded flex-wrap ">
+    <div className="body-border border rounded flex-wrap">
       <Form>
         <Form.Group className="my-3" controlId="formBasicText">
           <Form.Control

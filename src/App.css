@@ -4,6 +4,7 @@
   min-height: 100vh;
 }
 .todo-body {
+  align-items: center;
   height: 100vh;
   width: auto;
   text-align: center;

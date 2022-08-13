@@ -17,7 +17,7 @@ function App() {
     const newTodoItems = [...todoItems];
     const arr = newTodoItems.splice(index, 1);
     swal({
-      title: `Yakin todo ${arr[0].todo} akan di hapus?`,
+      title: `Yakin ${arr[0].todo} akan dihappus?`,
       text: `Setelah dihapus, Anda tidak akan dapat memulihkan todo ini`,
       icon: "warning",
       buttons: true,
@@ -58,7 +58,7 @@ function App() {
 
   return (
     <div className="backgrondBlock">
-      <div className=" p-5">
+      <div className="p-5">
         <div className="text-center">
           <h1>Todo List</h1>
         </div>
