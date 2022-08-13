@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import swal from "sweetalert";
 
 export default function TodoInput({ createTodoItem }) {
   const [value, setValue] = useState("");
@@ -9,15 +11,23 @@ export default function TodoInput({ createTodoItem }) {
     }
     createTodoItem(value);
     setValue("");
+    swal("Good job!", "Todo sudah berhasil ditambahkan pada list", "success", {
+      buttons: false,
+    });
   };
   return (
-    <from onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="tambah todo"
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <button onClick={handleSubmit}>create</button>
-    </from>
+    <div>
+      <Form>
+        <Form.Group className="my-3" controlId="formBasicText">
+          <Form.Control
+            type="text"
+            value={value}
+            placeholder="tambah todo"
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </Form.Group>
+        <Button onClick={handleSubmit}>Create</Button>
+      </Form>
+    </div>
   );
 }

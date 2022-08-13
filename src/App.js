@@ -1,10 +1,7 @@
 import { useState } from "react";
-import "./App.css";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import swal from "sweetalert";
 
-// import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import Register from "./pages/Register";
+import "./App.css";
 import TodoInput from "./components/todoInput";
 import TodoItem from "./components/todoItem";
 
@@ -19,8 +16,25 @@ function App() {
   const deleteTodoItem = (index) => {
     const newTodoItems = [...todoItems];
     newTodoItems.splice(index, 1);
-    setTodoItems(newTodoItems);
+    // console.log(arrayBaru);
+    swal({
+      title: `Yakin Todo  akan di hapus?`,
+      text: "Setelah dihapus, Anda tidak akan dapat memulihkan todo ini!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        setTodoItems(newTodoItems);
+        swal("todo anda berhasil dihapus", {
+          icon: "success",
+        });
+      } else {
+        swal("Todo anda aman!");
+      }
+    });
   };
+
   const completeTodoItem = (index) => {
     const newTodoItems = [...todoItems];
     newTodoItems[index].complete === false
@@ -44,25 +58,28 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <TodoInput createTodoItem={createTodoItem} />
-      {todoItems.map((item, index) => (
-        <TodoItem
-          key={index}
-          index={index}
-          item={item}
-          deleteTodoItem={deleteTodoItem}
-          completeTodoItem={completeTodoItem}
-          updateTodoItem={updateTodoItem}
-        />
-      ))}
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter> */}
+    <div className="backgrondBlock">
+      <div className=" p-5">
+        <div className="text-center">
+          <h1>Todo List</h1>
+        </div>
+        <div className="body-border border rounded flex-wrap ">
+          <div>
+            <TodoInput createTodoItem={createTodoItem} />
+          </div>
+
+          {todoItems.map((item, index) => (
+            <TodoItem
+              key={index}
+              index={index}
+              item={item}
+              deleteTodoItem={deleteTodoItem}
+              completeTodoItem={completeTodoItem}
+              updateTodoItem={updateTodoItem}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
