@@ -1,6 +1,7 @@
 .backgrondBlock {
   background-color: #8d99ae;
   color: #2b2d42;
+  min-height: 100vh;
 }
 .todo-body {
   height: 100vh;

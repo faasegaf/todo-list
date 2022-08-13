@@ -14,7 +14,7 @@ export default function todoItem({
 }) {
   return (
     <div>
-      <div className="d-flex justify-content-between my-3 px-3">
+      <div className="d-flex justify-content-between">
         <div className="d-flex justify-content-start gap-3">
           <Form.Check type="checkbox" onClick={() => completeTodoItem(index)} />
           <p

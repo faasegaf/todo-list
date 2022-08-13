@@ -15,11 +15,10 @@ function App() {
 
   const deleteTodoItem = (index) => {
     const newTodoItems = [...todoItems];
-    newTodoItems.splice(index, 1);
-    // console.log(arrayBaru);
+    const arr = newTodoItems.splice(index, 1);
     swal({
-      title: `Yakin Todo  akan di hapus?`,
-      text: "Setelah dihapus, Anda tidak akan dapat memulihkan todo ini!",
+      title: `Yakin todo ${arr[0].todo} akan di hapus?`,
+      text: `Setelah dihapus, Anda tidak akan dapat memulihkan todo ini`,
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -63,20 +62,20 @@ function App() {
         <div className="text-center">
           <h1>Todo List</h1>
         </div>
-        <div className="body-border border rounded flex-wrap ">
-          <div>
-            <TodoInput createTodoItem={createTodoItem} />
-          </div>
+        <div>
+          <TodoInput createTodoItem={createTodoItem} />
 
           {todoItems.map((item, index) => (
-            <TodoItem
-              key={index}
-              index={index}
-              item={item}
-              deleteTodoItem={deleteTodoItem}
-              completeTodoItem={completeTodoItem}
-              updateTodoItem={updateTodoItem}
-            />
+            <div className="body-border border rounded flex-wrap">
+              <TodoItem
+                key={index}
+                index={index}
+                item={item}
+                deleteTodoItem={deleteTodoItem}
+                completeTodoItem={completeTodoItem}
+                updateTodoItem={updateTodoItem}
+              />
+            </div>
           ))}
         </div>
       </div>
